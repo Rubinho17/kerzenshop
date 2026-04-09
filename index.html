@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lumière – Handgemachte Kerzen aus der Schweiz</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <!-- Snipcart CSS -->
+  <link rel="stylesheet" href="https://cdn.snipcart.com/themes/v3.3.3/default/snipcart.css" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <header class="nav">
+    <a href="index.html" class="logo">Lumière</a>
+    <nav class="nav-links">
+      <a href="index.html">Shop</a>
+      <a href="ueber-uns.html">Über uns</a>
+      <a href="kontakt.html">Kontakt</a>
+    </nav>
+    <button class="snipcart-checkout cart-btn" aria-label="Warenkorb öffnen">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+      <span class="snipcart-items-count"></span>
+    </button>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-text">
+      <p class="hero-sub">Handgefertigt in der Schweiz</p>
+      <h1>Kerzen, die<br><em>Momente</em><br>schaffen.</h1>
+      <a href="#produkte" class="btn-primary">Kollektion entdecken</a>
+    </div>
+    <div class="hero-img">
+      <img src="img/hero.jpg" alt="Handgemachte Kerzen von Lumière" onerror="this.style.background='#d4c5a9';this.removeAttribute('src')">
+    </div>
+  </section>
+
+  <!-- PRODUKTE -->
+  <section class="produkte" id="produkte">
+    <h2 class="section-title">Unsere Kollektion</h2>
+    <div class="produkt-grid">
+
+      <!-- Produkt 1 -->
+      <div class="produkt-card">
+        <div class="produkt-img-wrap">
+          <img src="img/blumenstrauss.png" alt="Blumenstrauss" onerror="this.parentElement.classList.add('img-placeholder')">
+          <span class="badge">Bestseller</span>
+        </div>
+        <div class="produkt-info">
+          <h3>Blumenstrauss</h3>
+          <p class="duft">Beruhigend · Warm · Blumig</p>
+          <p class="beschreibung">Entspannender Lavendel trifft auf cremige Vanille. Ideal für entspannte Abende zuhause.</p>
+          <div class="produkt-footer">
+            <span class="preis">CHF 65.00</span>
+            <button class="snipcart-add-item btn-kaufen"
+              data-item-id="kerze-blumenstrauss"
+              data-item-name="Lavendel & Vanille Kerze"
+              data-item-price="65.00"
+              data-item-url="/"
+              data-item-description="Handgemachte Kerze mit Lavendel & Vanille, ca. 40h Brenndauer"
+              data-item-image="img/blumenstrauss.png">
+              In den Warenkorb
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Produkt 2 -->
+      <div class="produkt-card">
+        <div class="produkt-img-wrap">
+          <img src="img/osterhase.png" alt="Osterhase" onerror="this.parentElement.classList.add('img-placeholder')">
+        </div>
+        <div class="produkt-info">
+          <h3>Osterhase</h3>
+          <p class="duft">Würzig · Frisch · Holzig</p>
+          <p class="beschreibung">Der Duft von frischem Holz und spritziger Bergamotte – wie ein Spaziergang im Wald.</p>
+          <div class="produkt-footer">
+            <span class="preis">CHF 28.00</span>
+            <button class="snipcart-add-item btn-kaufen"
+              data-item-id="kerze-osterhase"
+              data-item-name="Zedernholz & Bergamotte Kerze"
+              data-item-price="28.00"
+              data-item-url="/"
+              data-item-description="Handgemachte Kerze mit Zedernholz & Bergamotte, ca. 45h Brenndauer"
+              data-item-image="img/osterhase.png">
+              In den Warenkorb
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Produkt 3 -->
+      <div class="produkt-card">
+        <div class="produkt-img-wrap">
+          <img src="img/kerze-rose.jpg" alt="Bierglas" onerror="this.parentElement.classList.add('img-placeholder')">
+          <span class="badge neu">Neu</span>
+        </div>
+        <div class="produkt-info">
+          <h3>Bierglas</h3>
+          <p class="duft">Romantisch · Warm · Sinnlich</p>
+          <p class="beschreibung">Elegante Rose verbunden mit dem Tiefgang von Sandelholz. Ein Duft für besondere Momente.</p>
+          <div class="produkt-footer">
+            <span class="preis">CHF 22.00</span>
+            <button class="snipcart-add-item btn-kaufen"
+              data-item-id="kerze-rose"
+              data-item-name="Rose & Sandelholz Kerze"
+              data-item-price="22.00"
+              data-item-url="/"
+              data-item-description="Handgemachte Kerze mit Rose & Sandelholz, ca. 40h Brenndauer"
+              data-item-image="img/kerze-rose.jpg">
+              In den Warenkorb
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- VERSAND + ZAHLUNG -->
+  <section class="info-section">
+    <div class="info-grid">
+      <div class="info-block">
+        <div class="info-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </div>
+        <h4>Versand Schweiz</h4>
+        <p>Lieferung per Post innert 3–5 Werktagen. Ab CHF 60 versandkostenfrei.</p>
+      </div>
+      <div class="info-block">
+        <div class="info-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+        </div>
+        <h4>Bezahlung</h4>
+        <p>Twint, Kreditkarte (Visa/Mastercard) und weitere Methoden werden akzeptiert.</p>
+      </div>
+      <div class="info-block">
+        <div class="info-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </div>
+        <h4>Handgemacht</h4>
+        <p>Jede Kerze wird sorgfältig von Hand gegossen. Kleine Unterschiede sind gewollt.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <p class="footer-logo">Lumière</p>
+      <div class="footer-links">
+        <a href="ueber-uns.html">Über uns</a>
+        <a href="kontakt.html">Kontakt</a>
+        <a href="datenschutz.html">Datenschutz</a>
+        <a href="agb.html">AGB</a>
+      </div>
+      <p class="footer-copy">© 2025 Lumière · Handgemacht in der Schweiz</p>
+    </div>
+  </footer>
+
+  <div class="produkt-modal" hidden>
+    <div class="produkt-modal-backdrop"></div>
+    <div class="produkt-modal-card" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <button class="modal-close" aria-label="Schliessen">×</button>
+      <div class="modal-grid">
+        <div class="modal-image">
+          <img src="" alt="">
+        </div>
+        <div class="modal-content">
+          <span class="modal-badge"></span>
+          <h3 id="modal-title" class="modal-title"></h3>
+          <p class="modal-duft"></p>
+          <p class="modal-description"></p>
+          <div class="modal-footer">
+            <span class="modal-preis"></span>
+            <button class="modal-add btn-kaufen snipcart-add-item">In den Warenkorb</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Snipcart -->
+  <div hidden id="snipcart" data-api-key="DEIN_SNIPCART_API_KEY_HIER" data-currency="chf"></div>
+  <script async src="https://cdn.snipcart.com/themes/v3.3.3/default/snipcart.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const modal = document.querySelector('.produkt-modal');
+      const modalClose = modal.querySelector('.modal-close');
+      const modalBadge = modal.querySelector('.modal-badge');
+      const modalTitle = modal.querySelector('.modal-title');
+      const modalDuft = modal.querySelector('.modal-duft');
+      const modalDescription = modal.querySelector('.modal-description');
+      const modalPrice = modal.querySelector('.modal-preis');
+      const modalImage = modal.querySelector('.modal-image img');
+      const modalAdd = modal.querySelector('.modal-add');
+      const backdrop = modal.querySelector('.produkt-modal-backdrop');
+
+      function openModal(card) {
+        const img = card.querySelector('.produkt-img-wrap img');
+        const badge = card.querySelector('.badge');
+        const title = card.querySelector('h3').innerText;
+        const duft = card.querySelector('.duft').innerText;
+        const description = card.querySelector('.beschreibung').innerText;
+        const price = card.querySelector('.preis').innerText;
+        const buyButton = card.querySelector('.snipcart-add-item');
+
+        modalImage.src = img.src;
+        modalImage.alt = img.alt || title;
+        if (badge) {
+          modalBadge.textContent = badge.textContent;
+          modalBadge.style.display = 'inline-block';
+        } else {
+          modalBadge.style.display = 'none';
+        }
+
+        modalTitle.textContent = title;
+        modalDuft.textContent = duft;
+        modalDescription.textContent = description;
+        modalPrice.textContent = price;
+
+        if (buyButton) {
+          modalAdd.style.display = 'inline-flex';
+          modalAdd.dataset.itemId = buyButton.dataset.itemId || '';
+          modalAdd.dataset.itemName = buyButton.dataset.itemName || '';
+          modalAdd.dataset.itemPrice = buyButton.dataset.itemPrice || '';
+          modalAdd.dataset.itemUrl = buyButton.dataset.itemUrl || '';
+          modalAdd.dataset.itemDescription = buyButton.dataset.itemDescription || '';
+          modalAdd.dataset.itemImage = buyButton.dataset.itemImage || '';
+        } else {
+          modalAdd.style.display = 'none';
+        }
+
+        modal.hidden = false;
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeModal() {
+        modal.hidden = true;
+        document.body.style.overflow = '';
+      }
+
+      document.querySelectorAll('.produkt-card').forEach(function (card) {
+        card.addEventListener('click', function (event) {
+          if (event.target.closest('button, a')) return;
+          openModal(card);
+        });
+      });
+
+      modalClose.addEventListener('click', closeModal);
+      backdrop.addEventListener('click', closeModal);
+      document.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape' && !modal.hidden) closeModal();
+      });
+    });
+  </script>
+
+</body>
+</html>

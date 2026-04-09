@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kontakt – Lumière</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.snipcart.com/themes/v3.3.3/default/snipcart.css" />
+</head>
+<body>
+
+  <header class="nav">
+    <a href="index.html" class="logo">Lumière</a>
+    <nav class="nav-links">
+      <a href="index.html">Shop</a>
+      <a href="ueber-uns.html">Über uns</a>
+      <a href="kontakt.html">Kontakt</a>
+    </nav>
+    <button class="snipcart-checkout cart-btn" aria-label="Warenkorb öffnen">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+      <span class="snipcart-items-count"></span>
+    </button>
+  </header>
+
+  <section class="page-hero">
+    <h1>Kontakt</h1>
+    <p>Fragen, Sonderwünsche oder Bestellungen für Anlässe? Schreib mir gerne.</p>
+  </section>
+
+  <div class="page-content">
+    <form class="kontakt-form" action="https://formspree.io/f/DEINE_FORMSPREE_ID" method="POST">
+      <!-- Hinweis: Formspree.io kostenlos verwenden (bis 50 Formulareinsendungen/Monat) -->
+      <!-- Alternativ: Einfach durch deine E-Mail-Adresse ersetzen und mailto: verwenden -->
+
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" placeholder="Dein Name" required>
+      </div>
+
+      <div class="form-group">
+        <label for="email">E-Mail</label>
+        <input type="email" id="email" name="email" placeholder="deine@email.ch" required>
+      </div>
+
+      <div class="form-group">
+        <label for="betreff">Betreff</label>
+        <input type="text" id="betreff" name="betreff" placeholder="z.B. Sonderbestellung, Frage zu Produkt ...">
+      </div>
+
+      <div class="form-group">
+        <label for="nachricht">Nachricht</label>
+        <textarea id="nachricht" name="nachricht" rows="6" placeholder="Deine Nachricht..." required></textarea>
+      </div>
+
+      <button type="submit" class="btn-primary">Nachricht senden</button>
+    </form>
+
+    <div style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--warm);">
+      <h2>Oder direkt per E-Mail</h2>
+      <p>
+        <a href="mailto:hallo@lumiere-kerzen.ch" style="color: var(--accent);">hallo@lumiere-kerzen.ch</a>
+      </p>
+      <p style="margin-top: 1rem;">Ich antworte in der Regel innert 1–2 Werktagen.</p>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <p class="footer-logo">Lumière</p>
+      <div class="footer-links">
+        <a href="ueber-uns.html">Über uns</a>
+        <a href="kontakt.html">Kontakt</a>
+        <a href="datenschutz.html">Datenschutz</a>
+        <a href="agb.html">AGB</a>
+      </div>
+      <p class="footer-copy">© 2025 Lumière · Handgemacht in der Schweiz</p>
+    </div>
+  </footer>
+
+  <div hidden id="snipcart" data-api-key="DEIN_SNIPCART_API_KEY_HIER" data-currency="chf"></div>
+  <script async src="https://cdn.snipcart.com/themes/v3.3.3/default/snipcart.js"></script>
+</body>
+</html>
