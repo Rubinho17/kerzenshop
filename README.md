@@ -46,16 +46,16 @@ kerzen-shop/
    ```
    DEIN_SNIPCART_API_KEY_HIER  →  dein echter Public API Key
    ```
-4. In Snipcart-Dashboard unter **Payment** → **Mollie** auswählen
+4. In Snipcart-Dashboard unter **Payment** → **Stripe** auswählen
 
 ---
 
-## Schritt 3: Mollie einrichten (für Twint)
+## Schritt 3: Stripe einrichten (für Twint + Kreditkarte)
 
-1. Konto erstellen auf **mollie.com** (kostenlos, keine Grundgebühr)
-2. Schweizer Geschäftskonto verknüpfen (Pflicht für Twint)
-3. Unter **Payment methods** → **Twint** aktivieren
-4. API Key aus Mollie in Snipcart-Dashboard eingeben
+1. Konto erstellen auf **stripe.com** (kostenlos, kein Monatsabo)
+2. Identität und Geschäftsdaten verifizieren (Schweizer Konto für Twint erforderlich)
+3. Im Stripe-Dashboard: Settings → Payment methods → Twint aktivieren
+4. Stripe Publishable Key (pk_live_...) kopieren und in Snipcart-Dashboard unter Payment → Stripe einfügen
 
 ---
 
@@ -115,7 +115,7 @@ In `datenschutz.html` und `agb.html` ersetzen:
 |--------------|-------------------------------------|
 | GitHub Pages | Kostenlos                           |
 | Snipcart     | 2% pro Transaktion                  |
-| Mollie       | ~1–1.4% + CHF 0.25 pro Zahlung      |
+| Stripe       | 1.9% + CHF 0.30 (Twint), 2.9% + CHF 0.30 (Karte) |
 | Formspree    | Kostenlos bis 50 Anfragen/Monat     |
 | Domain .ch   | ~CHF 15–25 / Jahr (optional)        |
 
