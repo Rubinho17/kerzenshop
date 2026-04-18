@@ -265,6 +265,35 @@ a { text-decoration: none; color: inherit; }
   margin-bottom: 1.2rem;
 }
 
+.duft-varianten {
+  margin-bottom: 1rem;
+}
+
+.duft-varianten label {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text);
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.duft-select {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid var(--warm);
+  border-radius: var(--radius);
+  background: var(--white);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.duft-select:focus {
+  outline: none;
+  border-color: var(--dark);
+}
+
 .produkt-footer {
   display: flex;
   align-items: center;

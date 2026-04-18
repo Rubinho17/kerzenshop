@@ -52,10 +52,19 @@
           <h3>Blumenstrauss</h3>
           <p class="duft">Beruhigend · Blumig</p>
           <p class="beschreibung">Entspannender Lavendel trifft auf cremige Vanille. Ideal für entspannte Abende zuhause.</p>
+          <div class="duft-varianten">
+            <label for="duft-select-blumenstrauss">Duft auswählen:</label>
+            <select id="duft-select-blumenstrauss" class="duft-select">
+              <option value="Lavendel" data-name="Lavendel" data-description="Handgemachte Kerze mit Lavendel, ca. 40h Brenndauer">Lavendel</option>
+              <option value="Vanille" data-name="Vanille" data-description="Handgemachte Kerze mit Vanille, ca. 40h Brenndauer">Vanille</option>
+              <option value="Rose" data-name="Rose" data-description="Handgemachte Kerze mit Rose, ca. 40h Brenndauer">Rose</option>
+              <option value="Jasmin" data-name="Jasmin" data-description="Handgemachte Kerze mit Jasmin, ca. 40h Brenndauer">Jasmin</option>
+            </select>
+          </div>
           <div class="produkt-footer">
             <span class="preis">CHF 65.00</span>
             <button class="snipcart-add-item btn-kaufen"
-              data-item-id="kerze-blumenstrauss"
+              data-item-id="kerze-blumenstrauss-lavendel-vanille"
               data-item-name="Lavendel & Vanille Kerze"
               data-item-price="65.00"
               data-item-url="https://rubinho17.github.io/kerzenshop/index.html"
@@ -255,6 +264,23 @@
       document.addEventListener('keydown', function (event) {
         if (event.key === 'Escape' && !modal.hidden) closeModal();
       });
+
+      // Duftvarianten für Blumenstrauss
+      const duftSelect = document.getElementById('duft-select-blumenstrauss');
+      const buyButton = document.querySelector('#produkte .produkt-card:first-child .snipcart-add-item');
+
+      if (duftSelect && buyButton) {
+        duftSelect.addEventListener('change', function() {
+          const selectedOption = duftSelect.options[duftSelect.selectedIndex];
+          const newName = selectedOption.getAttribute('data-name');
+          const newDescription = selectedOption.getAttribute('data-description');
+          const newId = 'kerze-blumenstrauss-' + duftSelect.value;
+
+          buyButton.setAttribute('data-item-id', newId);
+          buyButton.setAttribute('data-item-name', newName);
+          buyButton.setAttribute('data-item-description', newDescription);
+        });
+      }
     });
   </script>
 
