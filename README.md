@@ -38,24 +38,18 @@ kerzen-shop/
 
 ---
 
-## Schritt 2: Snipcart einrichten
+## Schritt 2: Stripe Payment Links einrichten
 
-1. Konto erstellen auf **snipcart.com** (kostenlos, Zahlungen erst bei echten Verkäufen)
-2. Im Dashboard: **API Keys** kopieren
-3. In **allen HTML-Dateien** ersetzen:
-   ```
-   DEIN_SNIPCART_API_KEY_HIER  →  dein echter Public API Key
-   ```
-4. In Snipcart-Dashboard unter **Payment** → **Stripe** auswählen
+1. Konto erstellen auf **stripe.com** (kostenlos, keine monatlichen Gebühren)
+2. Identität und Geschäftsdaten verifizieren (für Schweiz)
+3. Im Stripe-Dashboard unter **Products** → Deine Produkte erstellen
+4. Für jedes Produkt eine **Payment Link** generieren
+5. Die Payment Links in `warenkorb.js` eintragen (Variable `STRIPE_PAYMENT_LINK`)
 
----
-
-## Schritt 3: Stripe einrichten (für Twint + Kreditkarte)
-
-1. Konto erstellen auf **stripe.com** (kostenlos, kein Monatsabo)
-2. Identität und Geschäftsdaten verifizieren (Schweizer Konto für Twint erforderlich)
-3. Im Stripe-Dashboard: Settings → Payment methods → Twint aktivieren
-4. Stripe Publishable Key (pk_live_...) kopieren und in Snipcart-Dashboard unter Payment → Stripe einfügen
+**Warenkorb-Funktionalität:**
+- Der Warenkorb speichert Produkte lokal im Browser (localStorage)
+- Beim Checkout werden alle Produkte in einer Zusammenfassung angezeigt
+- Redirect zu Stripe Payment Link für sichere Zahlungsabwicklung
 
 ---
 

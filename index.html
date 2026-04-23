@@ -19,9 +19,9 @@
       <a href="ueber-uns.html">Über uns</a>
       <a href="kontakt.html">Kontakt</a>
     </nav>
-    <button class="snipcart-checkout cart-btn" aria-label="Warenkorb öffnen">
+    <button class="cart-btn" id="cart-btn" aria-label="Warenkorb öffnen">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
-      <span class="snipcart-items-count"></span>
+      <span class="cart-items-count">0</span>
     </button>
   </header>
 
@@ -62,13 +62,11 @@
           </div>
           <div class="produkt-footer">
             <span class="preis">CHF 50.00</span>
-            <button class="snipcart-add-item btn-kaufen"
-              data-item-id="kerze-blumenstrauss-lavendel-vanille"
-              data-item-name="Lavendel Kerze"
-              data-item-price="65.00"
-              data-item-url="https://rubinho17.github.io/kerzenshop/index.html"
-              data-item-description="Handgemachte Kerze mit Lavendel, ca. 40h Brenndauer"
-              data-item-image="img/blumenstrauss.png">
+            <button class="add-to-cart-btn btn-kaufen"
+              data-product-id="blumenstrauss-lavendel"
+              data-product-name="Blumenstrauss – Lavendel"
+              data-product-price="50.00"
+              data-product-image="img/blumenstrauss.png">
               In den Warenkorb
             </button>
           </div>
@@ -85,13 +83,11 @@
           <p class="duft">Vanille</p>
           <div class="produkt-footer">
             <span class="preis">CHF 25.00</span>
-            <button class="snipcart-add-item btn-kaufen"
-              data-item-id="kerze-osterhase"
-              data-item-name="Vanille Kerze"
-              data-item-price="25.00"
-              data-item-url="https://rubinho17.github.io/kerzenshop/index.html"
-              data-item-description="Handgemachte Kerze mit Vanille, ca. 45h Brenndauer"
-              data-item-image="img/osterhase.png">
+            <button class="add-to-cart-btn btn-kaufen"
+              data-product-id="osterhase"
+              data-product-name="Osterhase"
+              data-product-price="25.00"
+              data-product-image="img/osterhase.png">
               In den Warenkorb
             </button>
           </div>
@@ -109,13 +105,11 @@
           <p class="duft">Duftlos</p>
           <div class="produkt-footer">
             <span class="preis">CHF 25.00</span>
-            <button class="snipcart-add-item btn-kaufen"
-              data-item-id="kerze-bierglas"
-              data-item-name="Duftlose Kerze"
-              data-item-price="25.00"
-              data-item-url="https://rubinho17.github.io/kerzenshop/index.html"
-              data-item-description="Handgemachte Kerze ohne Duft, ca. 40h Brenndauer"
-              data-item-image="img/bierglas.png">
+            <button class="add-to-cart-btn btn-kaufen"
+              data-product-id="bierglas"
+              data-product-name="Bierglas"
+              data-product-price="25.00"
+              data-product-image="img/bierglas.png">
               In den Warenkorb
             </button>
           </div>
@@ -178,20 +172,17 @@
           <span class="modal-badge"></span>
           <h3 id="modal-title" class="modal-title"></h3>
           <p class="modal-duft"></p>
-          <p class="modal-description"></p>
           <div class="modal-footer">
             <span class="modal-preis"></span>
-            <button class="modal-add btn-kaufen snipcart-add-item">In den Warenkorb</button>
+            <button class="modal-add btn-kaufen add-to-cart-btn">In den Warenkorb</button>
           </div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- Snipcart -->
-  <div hidden id="snipcart" data-api-key="ODZmYmU5NDktMGRmNS00Y2ZjLTgyZTgtMjE2ZmEzNjU3MmY2NjM5MTEzMTk4NTQ5NzQ5MzIy" data-currency="CHF"></div>
-  <link rel="stylesheet" href="https://cdn.snipcart.com/themes/v3.0.31/default/snipcart.css" />
-  <script async src="https://cdn.snipcart.com/themes/v3.0.31/default/snipcart.js"></script>
+  <!-- Cart Management -->
+  <script src="warenkorb.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', function () {
       const modal = document.querySelector('.produkt-modal');
@@ -199,7 +190,6 @@
       const modalBadge = modal.querySelector('.modal-badge');
       const modalTitle = modal.querySelector('.modal-title');
       const modalDuft = modal.querySelector('.modal-duft');
-      const modalDescription = modal.querySelector('.modal-description');
       const modalPrice = modal.querySelector('.modal-preis');
       const modalImage = modal.querySelector('.modal-image img');
       const modalAdd = modal.querySelector('.modal-add');
@@ -209,13 +199,13 @@
         const img = card.querySelector('.produkt-img-wrap img');
         const badge = card.querySelector('.badge');
         const title = card.querySelector('h3').innerText;
-        const duft = card.querySelector('.duft').innerText;
-        const description = card.querySelector('.beschreibung').innerText;
+        const duft = card.querySelector('.duft')?.innerText || '';
         const price = card.querySelector('.preis').innerText;
-        const buyButton = card.querySelector('.snipcart-add-item');
+        const buyButton = card.querySelector('.add-to-cart-btn');
 
         modalImage.src = img.src;
         modalImage.alt = img.alt || title;
+        
         if (badge) {
           modalBadge.textContent = badge.textContent;
           modalBadge.style.display = 'inline-block';
@@ -225,17 +215,14 @@
 
         modalTitle.textContent = title;
         modalDuft.textContent = duft;
-        modalDescription.textContent = description;
         modalPrice.textContent = price;
 
         if (buyButton) {
           modalAdd.style.display = 'inline-flex';
-          modalAdd.dataset.itemId = buyButton.dataset.itemId || '';
-          modalAdd.dataset.itemName = buyButton.dataset.itemName || '';
-          modalAdd.dataset.itemPrice = buyButton.dataset.itemPrice || '';
-          modalAdd.dataset.itemUrl = buyButton.dataset.itemUrl || '';
-          modalAdd.dataset.itemDescription = buyButton.dataset.itemDescription || '';
-          modalAdd.dataset.itemImage = buyButton.dataset.itemImage || '';
+          modalAdd.dataset.productId = buyButton.dataset.productId || '';
+          modalAdd.dataset.productName = buyButton.dataset.productName || '';
+          modalAdd.dataset.productPrice = buyButton.dataset.productPrice || '';
+          modalAdd.dataset.productImage = buyButton.dataset.productImage || '';
         } else {
           modalAdd.style.display = 'none';
         }
@@ -251,7 +238,7 @@
 
       document.querySelectorAll('.produkt-card').forEach(function (card) {
         card.addEventListener('click', function (event) {
-          if (event.target.closest('button, a')) return;
+          if (event.target.closest('button, a, select')) return;
           openModal(card);
         });
       });
@@ -264,18 +251,16 @@
 
       // Duftvarianten für Blumenstrauss
       const duftSelect = document.getElementById('duft-select-blumenstrauss');
-      const buyButton = document.querySelector('#produkte .produkt-card:first-child .snipcart-add-item');
+      const buyButton = document.querySelector('#produkte .produkt-card:first-child .add-to-cart-btn');
 
       if (duftSelect && buyButton) {
         duftSelect.addEventListener('change', function() {
           const selectedOption = duftSelect.options[duftSelect.selectedIndex];
-          const newName = selectedOption.getAttribute('data-name');
-          const newDescription = selectedOption.getAttribute('data-description');
-          const newId = 'kerze-blumenstrauss-' + duftSelect.value;
-
-          buyButton.setAttribute('data-item-id', newId);
-          buyButton.setAttribute('data-item-name', newName);
-          buyButton.setAttribute('data-item-description', newDescription);
+          const selectedValue = duftSelect.value;
+          const newName = 'Blumenstrauss – ' + selectedValue;
+          
+          buyButton.setAttribute('data-product-id', 'blumenstrauss-' + selectedValue);
+          buyButton.setAttribute('data-product-name', newName);
         });
       }
     });

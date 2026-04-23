@@ -17,9 +17,9 @@
       <a href="ueber-uns.html">Über uns</a>
       <a href="kontakt.html">Kontakt</a>
     </nav>
-    <button class="snipcart-checkout cart-btn" aria-label="Warenkorb öffnen">
+    <button class="cart-btn" id="cart-btn" aria-label="Warenkorb öffnen">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
-      <span class="snipcart-items-count"></span>
+      <span class="cart-items-count">0</span>
     </button>
   </header>
 
@@ -78,8 +78,6 @@
     </div>
   </footer>
 
-  <div hidden id="snipcart" data-api-key="ODZmYmU5NDktMGRmNS00Y2ZjLTgyZTgtMjE2ZmEzNjU3MmY2NjM5MTEzMTk4NTQ5NzQ5MzIy" data-currency="CHF"></div>
-  <link rel="stylesheet" href="https://cdn.snipcart.com/themes/v3.0.31/default/snipcart.css" />
-  <script async src="https://cdn.snipcart.com/themes/v3.0.31/default/snipcart.js"></script>
+  <script src="warenkorb.js"></script>
 </body>
 </html>
