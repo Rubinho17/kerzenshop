@@ -19,9 +19,9 @@
       <a href="ueber-uns.html">Über uns</a>
       <a href="kontakt.html">Kontakt</a>
     </nav>
-    <button class="cart-btn" id="cart-btn" aria-label="Warenkorb öffnen">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
-      <span class="cart-items-count">0</span>
+    <button class="cart-btn" id="cart-toggle" aria-label="Warenkorb anzeigen" type="button">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6h15l-1.5 9.5H7.5z"></path><circle cx="9" cy="20" r="1.5"></circle><circle cx="18" cy="20" r="1.5"></circle></svg>
+      <span id="cart-count" class="cart-items-count"></span>
     </button>
   </header>
 
@@ -54,10 +54,10 @@
           <div class="duft-varianten">
             <label for="duft-select-blumenstrauss">Duft auswählen:</label>
             <select id="duft-select-blumenstrauss" class="duft-select">
-              <option value="Lavendel" data-name="Lavendel" data-description="Handgemachte Kerze mit Lavendel, ca. 40h Brenndauer">Lavendel</option>
-              <option value="Vanille" data-name="Vanille" data-description="Handgemachte Kerze mit Vanille, ca. 40h Brenndauer">Vanille</option>
-              <option value="Rose" data-name="Rose" data-description="Handgemachte Kerze mit Rose, ca. 40h Brenndauer">Rose</option>
-              <option value="Jasmin" data-name="Jasmin" data-description="Handgemachte Kerze mit Jasmin, ca. 40h Brenndauer">Jasmin</option>
+              <option value="Lavendel" data-name="Lavendel" data-description="Handgemachte Kerze mit Lavendel, ca. 40h Brenndauer" data-payment-link="https://buy.stripe.com/lavendelLink">Lavendel</option>
+              <option value="Vanille" data-name="Vanille" data-description="Handgemachte Kerze mit Vanille, ca. 40h Brenndauer" data-payment-link="https://buy.stripe.com/vanilleLink">Vanille</option>
+              <option value="Rose" data-name="Rose" data-description="Handgemachte Kerze mit Rose, ca. 40h Brenndauer" data-payment-link="https://buy.stripe.com/roseLink">Rose</option>
+              <option value="Jasmin" data-name="Jasmin" data-description="Handgemachte Kerze mit Jasmin, ca. 40h Brenndauer" data-payment-link="https://buy.stripe.com/jasminLink">Jasmin</option>
             </select>
           </div>
           <div class="produkt-footer">
@@ -66,7 +66,8 @@
               data-product-id="blumenstrauss-lavendel"
               data-product-name="Blumenstrauss – Lavendel"
               data-product-price="50.00"
-              data-product-image="img/blumenstrauss.png">
+              data-product-image="img/blumenstrauss.png"
+              data-payment-link="https://buy.stripe.com/00wcN74HMg5M73Q90obo402">
               In den Warenkorb
             </button>
           </div>
@@ -87,7 +88,8 @@
               data-product-id="osterhase"
               data-product-name="Osterhase"
               data-product-price="25.00"
-              data-product-image="img/osterhase.png">
+              data-product-image="img/osterhase.png"
+              data-payment-link="https://buy.stripe.com/5kQ14p5LQ3j073QfoMbo400">
               In den Warenkorb
             </button>
           </div>
@@ -109,7 +111,8 @@
               data-product-id="bierglas"
               data-product-name="Bierglas"
               data-product-price="25.00"
-              data-product-image="img/bierglas.png">
+              data-product-image="img/bierglas.png"
+              data-payment-link="https://buy.stripe.com/7sY00l0rwaLsdse2C0bo401">
               In den Warenkorb
             </button>
           </div>
@@ -174,11 +177,30 @@
           <p class="modal-duft"></p>
           <div class="modal-footer">
             <span class="modal-preis"></span>
-            <button class="modal-add btn-kaufen add-to-cart-btn">In den Warenkorb</button>
+            <button class="modal-add btn-kaufen add-to-cart-btn" data-payment-link="">In den Warenkorb</button>
           </div>
         </div>
       </div>
     </div>
+  </div>
+
+  <div class="cart-drawer" hidden aria-hidden="true">
+    <div class="cart-backdrop"></div>
+    <aside class="cart-panel" role="dialog" aria-labelledby="cart-title">
+      <button class="cart-close" aria-label="Warenkorb schliessen" type="button">×</button>
+      <div class="cart-panel-inner">
+        <h2 id="cart-title">Warenkorb</h2>
+        <div class="cart-items"></div>
+        <div class="cart-summary">
+          <div class="summary-row">
+            <span>Zwischensumme</span>
+            <strong id="cart-total">CHF 0.00</strong>
+          </div>
+          <button id="cart-checkout" class="btn-primary" type="button" disabled>Zur Kasse</button>
+          <p class="cart-note">Fügen Sie ein Produkt hinzu, um zur Kasse zu gehen.</p>
+        </div>
+      </div>
+    </aside>
   </div>
 
   <!-- Cart Management -->
@@ -223,6 +245,7 @@
           modalAdd.dataset.productName = buyButton.dataset.productName || '';
           modalAdd.dataset.productPrice = buyButton.dataset.productPrice || '';
           modalAdd.dataset.productImage = buyButton.dataset.productImage || '';
+          modalAdd.dataset.paymentLink = buyButton.dataset.paymentLink || '';
         } else {
           modalAdd.style.display = 'none';
         }
@@ -249,20 +272,6 @@
         if (event.key === 'Escape' && !modal.hidden) closeModal();
       });
 
-      // Duftvarianten für Blumenstrauss
-      const duftSelect = document.getElementById('duft-select-blumenstrauss');
-      const buyButton = document.querySelector('#produkte .produkt-card:first-child .add-to-cart-btn');
-
-      if (duftSelect && buyButton) {
-        duftSelect.addEventListener('change', function() {
-          const selectedOption = duftSelect.options[duftSelect.selectedIndex];
-          const selectedValue = duftSelect.value;
-          const newName = 'Blumenstrauss – ' + selectedValue;
-          
-          buyButton.setAttribute('data-product-id', 'blumenstrauss-' + selectedValue);
-          buyButton.setAttribute('data-product-name', newName);
-        });
-      }
     });
   </script>
 
